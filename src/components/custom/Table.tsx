@@ -38,21 +38,10 @@ export default function BasicTable() {
                         <TableCell align="right" className='font-bold'>Email&nbsp;</TableCell>
                         <TableCell align="right" className='font-bold'>Phone_number&nbsp;</TableCell>
                         <TableCell align="right" className='font-bold'>Action&nbsp;</TableCell>
-                       
+
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                   
-                    <TableRow
-                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    >
-                        <TableCell component="th" scope="row">1</TableCell>
-                        <TableCell align="right">image</TableCell>
-                        <TableCell align="right">sachin sangwan</TableCell>
-                        <TableCell align="right">sangwansachin631@gmail.com</TableCell>
-                        <TableCell align="right">8053081201</TableCell>
-                        <TableCell align="right" className='text-red-500 active:text-red-400'><DeleteIcon/></TableCell>
-                    </TableRow>
 
                     <TableRow
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -62,18 +51,7 @@ export default function BasicTable() {
                         <TableCell align="right">sachin sangwan</TableCell>
                         <TableCell align="right">sangwansachin631@gmail.com</TableCell>
                         <TableCell align="right">8053081201</TableCell>
-                        <TableCell align="right" className='text-red-500 active:text-red-400'><DeleteIcon/></TableCell>
-                    </TableRow>
-                    
-                    <TableRow
-                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    >
-                        <TableCell component="th" scope="row">1</TableCell>
-                        <TableCell align="right">image</TableCell>
-                        <TableCell align="right">sachin sangwan</TableCell>
-                        <TableCell align="right">sangwansachin631@gmail.com</TableCell>
-                        <TableCell align="right">8053081201</TableCell>
-                        <TableCell align="right" className='text-red-500 active:text-red-400'><DeleteIcon/></TableCell>
+                        <TableCell align="right" className='text-red-500 active:text-red-400'><DeleteIcon /></TableCell>
                     </TableRow>
 
                 </TableBody>
