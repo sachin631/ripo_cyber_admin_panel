@@ -15,7 +15,6 @@ const Editor = ({ placeholder }: any) => {
     return (
         <div>
             <JoditEditor
-
                 ref={editor}
                 value={content}
                 config={config}

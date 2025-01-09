@@ -11,6 +11,8 @@ import WorkIcon from '@mui/icons-material/Work';
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import PeopleIcon from '@mui/icons-material/People';
+import QuizIcon from '@mui/icons-material/Quiz';
+import PolicyIcon from '@mui/icons-material/Policy';
 
 const SideBar = () => {
     const pathname = usePathname();
@@ -25,7 +27,9 @@ const SideBar = () => {
         { path: '/protected/whyUs', label: 'Why Us', icon: <WorkHistoryIcon /> },
         { path: '/protected/workTogether', label: 'Work Together', icon: <GroupWorkIcon /> },
         { path: '/protected/yourCareer', label: 'Your Career', icon: <WorkIcon /> },
-        { path: '/protected/users', label: 'users', icon: <PeopleIcon /> }
+        { path: '/protected/users', label: 'users', icon: <PeopleIcon /> },
+        { path: '/protected/Faq', label: 'Faq', icon: <QuizIcon /> },
+        { path: '/protected/privacyPolicy', label: 'privacyPolicy', icon: <PolicyIcon /> }
     ]
     return (
         <>
