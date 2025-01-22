@@ -10,7 +10,6 @@ const AboutUs = () => {
             <div >
                 <Editor />
             </div>
-
         </div>
     )
 }

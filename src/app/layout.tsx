@@ -4,6 +4,7 @@ import "./globals.css";
 import { QueryClient } from "@tanstack/react-query";
 import NavBar from "@/components/common/NavBar";
 import SideBar from "@/components/common/SideBar";
+import QueryProvider from "@/tanstack/TanstackProvider";
 
 
 const queryClient = new QueryClient();
@@ -30,27 +31,29 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <div>
-          <NavBar/>
-          {/* <SideBar/> */}
-        </div>
-        <div className="flex h-[70vh] gap-4 ">
-          {/* Sidebar */}
-          <div className="w-[15%] ">
-            <SideBar />
+      <QueryProvider>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <div>
+            <NavBar />
+            {/* <SideBar/> */}
           </div>
-          <div className="w-[85%] xl:ml-4 md:ml-[10%] sm:ml-[20%] ml-[25%]">
-          {children}
-          </div>
-         
-         
-        </div>
-        {/* {children} */}
+          <div className="flex h-[70vh] gap-4 ">
+            {/* Sidebar */}
+            <div className="w-[15%] ">
+              <SideBar />
+            </div>
+            <div className="w-[85%] xl:ml-4 md:ml-[10%] sm:ml-[20%] ml-[25%]">
+              {children}
+            </div>
 
-      </body>
+
+          </div>
+          {/* {children} */}
+
+        </body>
+      </QueryProvider>
     </html>
   );
 }
