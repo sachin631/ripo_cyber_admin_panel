@@ -16,6 +16,13 @@ export const getUsers = async (page: any, limit: any, search_key: any) => {
   return response?.data?.data;
 };
 
+//get common data 
+export const get_common_data = async () => {
+  const token = localStorage.getItem('token');
+  const response = await api.get('/admin/common/privacy_terms_about_detail', { headers: { 'Authorization': `Bearer ${token}` } });
+  return response?.data?.data;
+}
+
 //update about us
 export const update_about_us = async (data: any) => {
   const response = await api.put('/admin/common/privacy_terms_about', data, {

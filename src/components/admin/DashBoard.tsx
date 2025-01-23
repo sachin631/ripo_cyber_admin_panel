@@ -2,18 +2,19 @@
 import React, { useEffect, useState } from 'react'
 import PeopleIcon from '@mui/icons-material/People';
 import { getUsers } from '@/api/apiClient';
+import { useQuery } from '@tanstack/react-query';
+import Loader from '../custom/Loader';
 
 const DashBoard = () => {
-    const [user,setUser]=useState<any>([]);
-    useEffect(()=>{
-        const user=async()=>{
-            const res=await getUsers(1,1,'');
-            setUser(res);
-        };
-        user();
 
-    },[]);
-    console.log(user,'user');
+    const query=useQuery({
+        queryKey:['user_count'],
+        queryFn:async()=>{
+            const res=await getUsers(1,1,'');
+            return res;
+        }
+    });
+    const user=query.data;
   return (
     <div>
         <section className='w-[100%]'>
@@ -24,7 +25,7 @@ const DashBoard = () => {
                     <div className='text-2xl font-bold'>
                         <PeopleIcon />
                     </div>
-                    <div className='text-2xl font-bold'>{user?.totalCount}</div>
+                    <div className='text-2xl font-bold'>{user ? user?.totalCount : query.isLoading ? <Loader/>:""}</div>
                 </div>
             </div>
         </section>
