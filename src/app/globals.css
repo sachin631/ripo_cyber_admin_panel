@@ -13,9 +13,11 @@
     --foreground: #ededed;
   }
 }
-body{
-  margin: 1%;
+html,body{
+  margin: 0%;
   padding: 0px;
+  /* overflow: hidden; */
+  height: 100%;
 }
 
 

@@ -33,25 +33,9 @@ export default function RootLayout({
     <html lang="en">
       <QueryProvider>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased font-[poppins] `}
         >
-          <div>
-            <NavBar />
-            {/* <SideBar/> */}
-          </div>
-          <div className="flex h-[70vh] gap-4 ">
-            {/* Sidebar */}
-            <div className="w-[15%] ">
-              <SideBar />
-            </div>
-            <div className="w-[85%] xl:ml-4 md:ml-[10%] sm:ml-[20%] ml-[25%]">
-              {children}
-            </div>
-
-
-          </div>
-          {/* {children} */}
-
+          {children}
         </body>
       </QueryProvider>
     </html>
