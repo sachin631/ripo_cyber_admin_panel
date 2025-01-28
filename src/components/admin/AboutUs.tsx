@@ -11,7 +11,9 @@ import { useQueryClient } from '@tanstack/react-query';
 
 
 const AboutUs = () => {
-    const [content, setContent] = useState('')
+    const [content, setContent] = useState('');
+    const queryClient: any = useQueryClient();
+
     const query = useQuery({
         queryKey: ['common_content_listing'],
         queryFn: async () => {
@@ -27,7 +29,6 @@ const AboutUs = () => {
     if (query.isLoading) {
         return <div className="flex justify-center items-center"><Loader /></div>;
     }
-    const queryClient: any = useQueryClient();
 
     const edit_button_fn = async (data: any) => {
         console.log(data, 'datahahahhafunctioon');

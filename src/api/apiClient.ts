@@ -85,6 +85,27 @@ export const update_home_content = async (data: any) => {
   return response?.data;
 }
 
+//ADD internship
+export const add_internship = async (data: any) => {
+  const response = await api.post('/admin/internship/category/create_internship_category', data, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
+//internship listing
+export const get_internship_listing = async () => {
+  const response = await api.get('/admin/internship/category/internship_category_listing', {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  });
+  return response?.data;
+}
+
 
 
 
