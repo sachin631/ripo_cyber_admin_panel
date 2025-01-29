@@ -97,10 +97,35 @@ export const add_internship = async (data: any) => {
 }
 
 //internship listing
-export const get_internship_listing = async () => {
-  const response = await api.get('/admin/internship/category/internship_category_listing', {
+export const get_internship_listing = async (page: number, limit: number, search_key: string) => {
+  console.log(page, limit, search_key, 'page');
+  const response = await api.get(`/admin/internship/category/internship_category_listing/?page=${page}&limit=${limit}&search_key=${search_key}`, {
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  });
+  return response?.data;
+}
+
+//update internship
+
+export const update_internship = async (data: any) => {
+  const response = await api.put('/admin/internship/category/update_internship_category', data, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
+//delete internship
+
+export const delete_internship = async (id: number) => {
+  const response = await api.delete(`/admin/internship/category/delete_category?internship_category_id=${id}`, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
     }
   });
   return response?.data;
