@@ -13,6 +13,7 @@ import Link from 'next/link';
 import PeopleIcon from '@mui/icons-material/People';
 import QuizIcon from '@mui/icons-material/Quiz';
 import PolicyIcon from '@mui/icons-material/Policy';
+import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 
 const SideBar = () => {
     const pathname = usePathname();
@@ -29,7 +30,8 @@ const SideBar = () => {
         { path: '/protected/yourCareer', label: 'Your Career', icon: <WorkIcon /> },
         { path: '/protected/users', label: 'users', icon: <PeopleIcon /> },
         { path: '/protected/Faq', label: 'Faq', icon: <QuizIcon /> },
-        { path: '/protected/privacyPolicy', label: 'privacyPolicy', icon: <PolicyIcon /> }
+        { path: '/protected/privacyPolicy', label: 'privacyPolicy', icon: <PolicyIcon /> },
+        {path:'/protected/internShipForm',label:'internShipForm',icon:<InsertDriveFileIcon />}
     ]
     return (
         <>

@@ -43,7 +43,7 @@ const Home = () => {
         }
     }
     const home_data: any = {
-        query_data_aboutUs: query.data.data.description,
+        query_data_aboutUs: query?.data?.data?.description,
         edit_button_fn: edit_button_fn
     }
     console.log(home_data, 'home_data');

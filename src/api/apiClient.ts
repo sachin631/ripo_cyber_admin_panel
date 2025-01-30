@@ -85,7 +85,7 @@ export const update_home_content = async (data: any) => {
   return response?.data;
 }
 
-//ADD internship
+// *********************************************** internship section *************************************************************************
 export const add_internship = async (data: any) => {
   const response = await api.post('/admin/internship/category/create_internship_category', data, {
     headers: {
@@ -130,6 +130,34 @@ export const delete_internship = async (id: number) => {
   });
   return response?.data;
 }
+
+export const get_internship_details = async (id: any) => {
+  console.log(id, 'idddd');
+  const response = await api.get(`/admin/internship/category/get_internship_details?internship_category_id=${id}`, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
+export const update_internship_details = async (data: any) => {
+  console.log(data, 'dataaaaaa');
+  const response = await api.put('/admin/internship/category/update_internship_details', data, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
+
+// *********************************************** our services  section *************************************************************************
+
+
+
 
 
 

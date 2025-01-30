@@ -126,10 +126,10 @@ const InternShip = () => {
                 {
                     query?.data?.internship_categoryy?.map((item: any) => {
                         return (
-                            <h1 className='px-4 py-4 text-center rounded-lg text-white bg-orange-500 text-2xl font-bold text-gray flex justify-between'>
+                            <h1 className='px-4 py-4 text-center rounded-lg text-white bg-orange-500 text-2xl font-bold text-gray flex justify-between' key={item?._id}>
                                 <span>{item?.name}</span>
                                 <div className='flex gap-4'>
-                                    <span><Button variant='contained' color='primary' onClick={() => { router.push(`/protected/internShipDetails/${item?.id}`) }} type='button'>view</Button></span>
+                                    <span><Button variant='contained' color='primary' onClick={() => { router.push(`/protected/internShipDetails/${item?._id}`) }} type='button'>view</Button></span>
                                     <span><Button variant='contained' color='primary' onClick={() => handleOpen('Edit Internship', item?._id)} type='button'>Edit</Button></span>
                                     <span><Button variant='contained' type='button' className='bg-red-500 text-white' onClick={() => delete_intern(item?._id)}>Delete</Button></span>
                                 </div>

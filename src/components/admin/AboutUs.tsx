@@ -71,7 +71,7 @@ const AboutUs = () => {
     // })
 
     const about_us_data = {
-        query_data_aboutUs: query.data.data.about_us,
+        query_data_aboutUs: query?.data?.data?.about_us,
         edit_button_fn: edit_button_fn
     }
 
