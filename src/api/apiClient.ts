@@ -156,6 +156,36 @@ export const update_internship_details = async (data: any) => {
 
 // *********************************************** our services  section *************************************************************************
 
+export const create_our_services = async (data: any) => {
+  const response = await api.post('/api/v1/admin/useCase/create_usecase', data, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
+export const get_our_services_listing = async (page: number, limit: number, search_key: string, data_type: number) => {
+  console.log(page, limit, search_key, 'page');
+  const response = await api.get(`/api/v1/admin/useCase/usecase_listing?page=${page}&limit=${limit}&search_key=${search_key}&data_type=${data_type}`, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
+export const update_our_services = async (data: any) => {
+  const response = await api.put('/api/v1/admin/useCase/update_usecase', data, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
 
 
 
