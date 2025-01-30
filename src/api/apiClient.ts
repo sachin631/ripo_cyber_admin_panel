@@ -187,6 +187,16 @@ export const update_our_services = async (data: any) => {
   return response?.data;
 }
 
+export const delete_our_services= async (id: number) => {
+  const response = await api.delete(`api/v1/admin/useCase/delete_usecase?usecase_id=679b892d3eb3aa4a063011f9&data_type=1`, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
 
 
 
