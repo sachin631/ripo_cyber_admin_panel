@@ -44,8 +44,6 @@ const InternShip = () => {
     const router = useRouter();
 
     const btnClick = (data: any) => {
-        console.log(data);
-
         mutation.mutate({ data, id: _id });
     }
     const { data: query, isLoading, isError } = useQuery({

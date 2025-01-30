@@ -20,7 +20,8 @@ const style = {
   p: 4,
 };
 
-export default function MultiActionAreaCard() {
+export default function MultiActionAreaCard(data: any) {
+  console.log(data.data, 'namkjkle');
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -32,35 +33,38 @@ export default function MultiActionAreaCard() {
 
 
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 h-[70vh] overflow-y-scroll">
+        {data?.data?.map((curelem:any) => {
+          return (
+            <Card key={curelem._id} sx={{ maxWidth: 345 }} className=" md:h-[55vh] lg:[45vh] h-[65vh]">
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  height="140"
+                  image={curelem?.image?.url}
+                  alt="green iguana"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {curelem?.name}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                    {curelem?.description}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+              <CardActions>
+                <Button size="small" color="primary" variant='contained' onClick={handleOpen}>
+                  Edit
+                </Button>
+                <Button size="small" variant='contained' className='bg-red-500'>
+                  Delete
+                </Button>
+              </CardActions>
+            </Card>
+          )
+        })}
 
-        {Array.from({ length: 19 }).map((_, index) => (
-          <Card key={index} sx={{ maxWidth: 345 }} className="h-[45vh]">
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height="140"
-                image="https://d110yui55r0n46.cloudfront.net/logo2.png"
-                alt="green iguana"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Lizard
-                </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging across all continents except Antarctica.
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button size="small" color="primary" variant='contained' onClick={handleOpen}>
-                Edit
-              </Button>
-              <Button size="small" variant='contained' className='bg-red-500'>
-                Delete
-              </Button>
-            </CardActions>
-          </Card>
-        ))}
+
       </div>
 
 

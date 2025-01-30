@@ -168,7 +168,7 @@ export const create_our_services = async (data: any) => {
 
 export const get_our_services_listing = async (page: number, limit: number, search_key: string, data_type: number) => {
   console.log(page, limit, search_key, 'page');
-  const response = await api.get(`/api/v1/admin/useCase/usecase_listing?page=${page}&limit=${limit}&search_key=${search_key}&data_type=${data_type}`, {
+  const response = await api.get(`/admin/useCase/usecase_listing?page=${page}&limit=${limit}&search_key=${search_key}&data_type=${data_type}`, {
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
       'Content-Type': 'application/json',
@@ -187,8 +187,8 @@ export const update_our_services = async (data: any) => {
   return response?.data;
 }
 
-export const delete_our_services= async (id: number) => {
-  const response = await api.delete(`api/v1/admin/useCase/delete_usecase?usecase_id=679b892d3eb3aa4a063011f9&data_type=1`, {
+export const delete_our_services = async (id: number, data_type: number) => {
+  const response = await api.delete(`api/v1/admin/useCase/delete_usecase?usecase_id=${id}&data_type=${data_type}`, {
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
       'Content-Type': 'application/json',
