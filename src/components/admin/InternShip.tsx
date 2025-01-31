@@ -93,7 +93,6 @@ const InternShip = () => {
             toast.error(err?.response?.data?.message);
         }
     });
-    console.log(query?.data?.data?.internship_categoryy, 'querydataaaaa');
 
     const delete_intern = async (id: any) => {
         deleteMutation.mutate(id);

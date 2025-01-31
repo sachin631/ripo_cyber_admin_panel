@@ -154,13 +154,13 @@ export const update_internship_details = async (data: any) => {
 }
 
 
-// *********************************************** our services  section *************************************************************************
+// *********************************************** our services,usecaes,whyUs  section *************************************************************************
 
 export const create_our_services = async (data: any) => {
-  const response = await api.post('/api/v1/admin/useCase/create_usecase', data, {
+  const response = await api.post('/admin/useCase/create_usecase', data, {
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      'Content-Type': 'application/json',
+      'content-type': 'multipart/form-data'
     }
   });
   return response?.data;
@@ -181,14 +181,14 @@ export const update_our_services = async (data: any) => {
   const response = await api.put('/api/v1/admin/useCase/update_usecase', data, {
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      'Content-Type': 'application/json',
+      'Content-Type': 'multipart/form-data',
     }
   });
   return response?.data;
 }
 
 export const delete_our_services = async (id: number, data_type: number) => {
-  const response = await api.delete(`api/v1/admin/useCase/delete_usecase?usecase_id=${id}&data_type=${data_type}`, {
+  const response = await api.delete(`/admin/useCase/delete_usecase?usecase_id=${id}&data_type=${data_type}`, {
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
       'Content-Type': 'application/json',

@@ -26,14 +26,10 @@ export default function MultiActionAreaCard(data: any) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-
   return (
-
     <>
-
-
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 h-[70vh] overflow-y-scroll">
-        {data?.data?.map((curelem:any) => {
+        {data?.data?.data?.use_cases?.map((curelem:any) => {
           return (
             <Card key={curelem._id} sx={{ maxWidth: 345 }} className=" md:h-[55vh] lg:[45vh] h-[65vh]">
               <CardActionArea>
@@ -56,7 +52,7 @@ export default function MultiActionAreaCard(data: any) {
                 <Button size="small" color="primary" variant='contained' onClick={handleOpen}>
                   Edit
                 </Button>
-                <Button size="small" variant='contained' className='bg-red-500'>
+                <Button size="small" variant='contained' className='bg-red-500' onClick={()=>{}}>
                   Delete
                 </Button>
               </CardActions>
