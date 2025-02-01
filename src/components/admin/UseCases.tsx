@@ -22,13 +22,22 @@ const style = {
   p: 4,
 };
 
-const OurServices = () => {
+const useCases = () => {
   //hooks
   const [open, setOpen] = React.useState(false);
   const [page, setPage] = React.useState(1);
   const [search_key, setSearchKey] = React.useState('');
   const [deBounceKey, setDebounceKey] = useState(search_key);
   const { register, handleSubmit, formState: { errors }, watch } = useForm();
+
+   useEffect(()=>{
+      const fn=async()=>{
+        await queryClient.invalidateQueries({ queryKey: ['our_services', page, deBounceKey] });
+        await queryClient.refetchQueries({ queryKey: ['our_services', page, deBounceKey] });
+      }
+      fn();
+      
+    },[])
 
   const mutation = useMutation({
     mutationFn: async (data: any) => {
@@ -226,4 +235,4 @@ const OurServices = () => {
   )
 }
 
-export default OurServices
+export default useCases

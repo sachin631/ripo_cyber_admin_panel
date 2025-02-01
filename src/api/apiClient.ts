@@ -197,6 +197,48 @@ export const delete_our_services = async (id: number, data_type: number) => {
   return response?.data;
 }
 
+export const edit_work_together = async (data: any) => {
+  console.log(data, 'in client')
+  const response = await api.put('/admin/common/edit_work_together', data, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  console.log(response, 'response')
+  return response?.data;
+}
+
+export const get_work_together = async () => {
+  const response = await api.get('/admin/common/work_together_detail', {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
+export const edit_your_career = async (data: any) => {
+  const response = await api.put('/admin/youCareer/create_career', data, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
+export const your_career_details = async () => {
+  const response = await api.get('/admin/youCareer/career_detail', {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
 
 
 

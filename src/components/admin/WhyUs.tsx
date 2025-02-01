@@ -22,13 +22,23 @@ const style = {
   p: 4,
 };
 
-const OurServices = () => {
+const WhyUs = () => {
   //hooks
   const [open, setOpen] = React.useState(false);
   const [page, setPage] = React.useState(1);
   const [search_key, setSearchKey] = React.useState('');
   const [deBounceKey, setDebounceKey] = useState(search_key);
   const { register, handleSubmit, formState: { errors }, watch } = useForm();
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    const fn = async () => {
+      await queryClient.invalidateQueries({ queryKey: ['our_services', page, deBounceKey] });
+      await queryClient.refetchQueries({ queryKey: ['our_services', page, deBounceKey] });
+    }
+    fn();
+
+  }, []);
 
   const mutation = useMutation({
     mutationFn: async (data: any) => {
@@ -90,14 +100,13 @@ const OurServices = () => {
     return () => clearTimeout(timer);
   }, [search_key]);
 
-  const queryClient = useQueryClient();
   //variables
   const limit = 5;
   //query functions
   const query = useQuery({
     queryKey: ['our_services', page, deBounceKey],
     queryFn: async () => {
-      const res = await get_our_services_listing(page, limit, deBounceKey, DATA_TYPE.USE_CASE);
+      const res = await get_our_services_listing(page, limit, deBounceKey, DATA_TYPE.WHY_US);
       return res;
     },
     refetchOnWindowFocus: false,
@@ -127,18 +136,18 @@ const OurServices = () => {
     formData.append('name', data.name);
     formData.append('image', data.image[0]);
     formData.append('usecase_id', id);
-    formData.append('data_type', DATA_TYPE.USE_CASE.toString());
+    formData.append('data_type', DATA_TYPE.WHY_US.toString());
     console.log(formData, 'formadata')
     edit_service_mutation.mutate(formData);
   }
 
   const del_service = async (id: any) => {
     console.log(id, 'hahahha')
-    const data:any={
-      usecase_id:id,
-      data_type:DATA_TYPE.USE_CASE
+    const data: any = {
+      usecase_id: id,
+      data_type: DATA_TYPE.WHY_US
     }
-     delete_our_services_mutation.mutate(data);
+    delete_our_services_mutation.mutate(data);
   }
   const data: any = {
     data: query?.data?.data,
@@ -153,7 +162,7 @@ const OurServices = () => {
     formData.append('description', data.description);
     formData.append('name', data.title);
     formData.append('image', data.image[0]);
-    formData.append('data_type', DATA_TYPE.USE_CASE.toString());
+    formData.append('data_type', DATA_TYPE.WHY_US.toString());
 
     mutation.mutate(formData);
   }
@@ -184,7 +193,7 @@ const OurServices = () => {
         >
           <Box sx={style} className='flex flex-col gap-3 rounded-lg'>
             <Typography id="modal-modal-title" variant="h6" component="h2" className='text-center'>
-              Add usecases
+              Add whyus
             </Typography>
 
             {/* ✅ Wrap inputs inside a form */}
@@ -226,4 +235,4 @@ const OurServices = () => {
   )
 }
 
-export default OurServices
+export default WhyUs

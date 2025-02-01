@@ -30,6 +30,15 @@ const OurServices = () => {
   const [deBounceKey, setDebounceKey] = useState(search_key);
   const { register, handleSubmit, formState: { errors }, watch } = useForm();
 
+  useEffect(()=>{
+    const fn=async()=>{
+      await queryClient.invalidateQueries({ queryKey: ['our_services', page, deBounceKey] });
+      await queryClient.refetchQueries({ queryKey: ['our_services', page, deBounceKey] });
+    }
+    fn();
+    
+  },[])
+
   const mutation = useMutation({
     mutationFn: async (data: any) => {
       const res = await create_our_services(data);
