@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import MultiActionAreaCard from '../custom/Card';
 import { Box, Button, FormControl, Input, InputLabel, Modal, Pagination, Typography } from '@mui/material'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { create_our_services, get_our_services_listing } from '@/api/apiClient';
+import { create_our_services, delete_our_services, get_our_services_listing, update_our_services } from '@/api/apiClient';
 import { AxiosError } from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import Loader from '../custom/Loader';
@@ -45,7 +45,39 @@ const OurServices = () => {
       toast.error(error?.response?.data?.message || 'An error occurred');
     },
 
-  })
+  });
+
+  const edit_service_mutation = useMutation({
+    mutationFn: async (data: any) => {
+      const res = await update_our_services(data);
+      return res;
+    },
+    onError: async (error: any) => {
+      console.log(error, 'error');
+      toast.error(error?.response?.data?.message || 'An error occurred');
+    },
+    onSuccess: async (data: any) => {
+      await queryClient.invalidateQueries({ queryKey: ['our_services', page, deBounceKey] });
+      await queryClient.refetchQueries({ queryKey: ['our_services', page, deBounceKey] });
+      toast.success(data.message);
+    },
+  });
+
+  const delete_our_services_mutation = useMutation({
+    mutationFn: async (data: any) => {
+      const res = await delete_our_services(data.usecase_id, data.data_type);
+      return res;
+    },
+    onError: async (error: any) => {
+      console.log(error, 'error');
+      toast.error(error?.response?.data?.message || 'An error occurred');
+    },
+    onSuccess: async (data: any) => {
+      await queryClient.invalidateQueries({ queryKey: ['our_services', page, deBounceKey] });
+      await queryClient.refetchQueries({ queryKey: ['our_services', page, deBounceKey] });
+      toast.success(data.message);
+    },
+  });
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -67,7 +99,11 @@ const OurServices = () => {
     queryFn: async () => {
       const res = await get_our_services_listing(page, limit, deBounceKey, DATA_TYPE.OUR_SERVICES);
       return res;
-    }
+    },
+    refetchOnWindowFocus: false,
+    // keepPreviousData: true,
+    refetchOnMount: false,
+    retry: false,
   });
   console.log(query?.data?.data?.totalPages, 'queryss');
   if (query.isError) {
@@ -82,17 +118,27 @@ const OurServices = () => {
     )
   }
 
-  //update_our_services
-  const update_our_services = async (data: any) => {
-    console.log(data, 'data');
+
+
+  const edit_service = async (id: any, data: any) => {
+    console.log(data, 'hahahha')
+    const formData = new FormData();
+    formData.append('description', data.description);
+    formData.append('name', data.name);
+    formData.append('image', data.image[0]);
+    formData.append('usecase_id', id);
+    formData.append('data_type', DATA_TYPE.OUR_SERVICES.toString());
+    console.log(formData, 'formadata')
+    edit_service_mutation.mutate(formData);
   }
 
-  const edit_service = async (data: any) => {
-    console.log(data, 'data edit service');
-  }
-
-  const del_service = async (data: any) => {
-    console.log(data, 'data del');
+  const del_service = async (id: any) => {
+    console.log(id, 'hahahha')
+    const data:any={
+      usecase_id:id,
+      data_type:DATA_TYPE.OUR_SERVICES
+    }
+     delete_our_services_mutation.mutate(data);
   }
   const data: any = {
     data: query?.data?.data,
@@ -123,7 +169,7 @@ const OurServices = () => {
 
       <h1 className='font-bold text-3xl'>Our Services</h1>
       <div className='w-[100%] h-[100%] text-center'>
-        <MultiActionAreaCard data={data} />
+        <MultiActionAreaCard {...data} />
       </div>
 
 

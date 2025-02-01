@@ -178,7 +178,7 @@ export const get_our_services_listing = async (page: number, limit: number, sear
 }
 
 export const update_our_services = async (data: any) => {
-  const response = await api.put('/api/v1/admin/useCase/update_usecase', data, {
+  const response = await api.put('/admin/useCase/update_usecase', data, {
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
       'Content-Type': 'multipart/form-data',
