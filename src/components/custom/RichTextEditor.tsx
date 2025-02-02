@@ -29,17 +29,19 @@ const Editor = ({ query_data_aboutUs, edit_button_fn }: any) => {
     }
     console.log(content, 'content..');
     return (
-        <div>
-            <JoditEditor
-                ref={editor}
-                value={content}
-                // config={config}
-                // tabIndex={1} // tabIndex of textarea
-                // onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-                onChange={(event) => onChange(event)}
-            />
+        <>
+            <div className='overflow-x-auto max-h-[70vh] scrollbar-hide'>
+                <JoditEditor
+                    ref={editor}
+                    value={content}
+                    // config={config}
+                    // tabIndex={1} // tabIndex of textarea
+                    // onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                    onChange={(event) => onChange(event)}
+                />
+            </div>
             <Button variant='contained' className='shadow-2xl mt-6' onClick={edit_button}>EDIT</Button>
-        </div>
+        </>
 
     );
 };

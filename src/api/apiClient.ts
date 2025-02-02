@@ -239,6 +239,85 @@ export const your_career_details = async () => {
   return response?.data;
 }
 
+// user listing
+
+export const user_listing = async (page: any, limit: any, search_key: any) => {
+  console.log(page, limit, search_key);
+  const response = await api.get(`/admin/user/listing?page=${page}&limit=${limit}&search_key=${search_key}`);
+  return response?.data?.data;
+};
+
+export const delete_user = async (id: any) => {
+  const response = await api.delete(`admin/user/delete?user_id=${id}`, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
+export const create_faq = async (data: any) => {
+  const response = await api.post('/admin/common/create_faq', data, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
+export const faq_listing = async () => {
+  const response = await api.get(`/admin/common/faq_listing`, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data?.data;
+}
+
+export const update_faq = async (data: any) => {
+  const response = await api.put('/admin/common/update_faq', data, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
+export const delete_faq = async (data: any) => {
+  console.log(data, 'data');
+  const response = await api.delete(`/admin/common/delete_faq/?question_id=${data}`, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
+export const privacy_details = async () => {
+  const response = await api.get('/admin/common/privacy_terms_about_detail', {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
+export const update_privacy_details = async (data: any) => {
+  const response = await api.put('/admin/common/privacy_terms_about', data, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
+
 
 
 

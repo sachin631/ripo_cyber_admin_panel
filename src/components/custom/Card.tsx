@@ -38,7 +38,7 @@ export default function MultiActionAreaCard({ data, edit_fn, del_fn }: any) {
         {data?.use_cases?.map((curelem: any) => {
           return (
 
-            <Card key={curelem._id} sx={{ maxWidth: 345 }} className=" md:h-[55vh] lg:[45vh] h-[65vh]">
+            <Card key={curelem._id} sx={{ maxWidth: 345 }} className=" md:h-[55vh] lg:[45vh] h-[65vh] overflow-y-auto">
               <CardActionArea>
                 <CardMedia
                   component="img"

@@ -26,7 +26,8 @@ function createData(
 //   createData('Gingerbread', 356, 16.0, 49, 3.9),
 // ];
 
-export default function BasicTable() {
+export default function BasicTable({ user_list, delfn }: any) {
+    console.log(user_list, 'prop_data list');
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 550 }} aria-label="simple table">
@@ -42,17 +43,21 @@ export default function BasicTable() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-
-                    <TableRow
-                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                    >
-                        <TableCell component="th" scope="row">1</TableCell>
-                        <TableCell align="right">image</TableCell>
-                        <TableCell align="right">sachin sangwan</TableCell>
-                        <TableCell align="right">sangwansachin631@gmail.com</TableCell>
-                        <TableCell align="right">8053081201</TableCell>
-                        <TableCell align="right" className='text-red-500 active:text-red-400'><DeleteIcon /></TableCell>
-                    </TableRow>
+                    {user_list?.map((curelem: any, index: any) => {
+                        return (
+                            <TableRow
+                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                key={index}
+                            >
+                                <TableCell component="th" scope="row">{index + 1}</TableCell>
+                                <TableCell align="right"><img src={curelem?.profile_pic?.url} className='w-[50px] h-[50px] rounded-full' /></TableCell>
+                                <TableCell align="right">{curelem?.name}</TableCell>
+                                <TableCell align="right">{curelem?.email}</TableCell>
+                                <TableCell align="right">{curelem?.phone_number}</TableCell>
+                                <TableCell align="right" className='text-red-500 active:text-red-400'><DeleteIcon onClick={() => delfn(curelem?._id)} /></TableCell>
+                            </TableRow>
+                        )
+                    })}
 
                 </TableBody>
             </Table>

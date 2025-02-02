@@ -35,7 +35,7 @@ const SideBar = () => {
     ]
     return (
         <>
-            <section className='w-[100%]  font-[poppins] min-w-[200px] '>
+            <section className='w-[100%]  font-[poppins] min-w-[200px] overflow-x-auto h-[85vh]'>
                 <main>
                     <div className='flex flex-col gap-3'>
                         {

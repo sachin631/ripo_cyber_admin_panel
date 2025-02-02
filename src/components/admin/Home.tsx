@@ -35,11 +35,11 @@ const Home = () => {
     const edit_button_fn = async (data: any) => {
         console.log(data, 'datahahahhafunctioon');
         setContent(data);
-        const res=await update_home_content({description:data.about_us});
-        if(res.data){
+        const res = await update_home_content({ description: data.about_us });
+        if (res.data) {
             toast.success(res.message);
-        }else{
-            toast.error(res.message||'An error occurred');
+        } else {
+            toast.error(res.message || 'An error occurred');
         }
     }
     const home_data: any = {
