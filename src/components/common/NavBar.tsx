@@ -5,9 +5,10 @@ import BasicSelect from '../custom/Select'
 const NavBar = () => {
   return (
     <section >
-        <div className='flex justify-between items-center  '>
-            <div className='transform  '>
-                <img src="https://d110yui55r0n46.cloudfront.net/logo2.png" alt="google_drive" className='w-[30%]'/>
+        <div className='flex justify-between items-center text-white px-4 py-4 '>
+            <div className='transform  text-black font-extrabold text-[24px]'>
+                {/* <img src="/logo.jpg" alt="google_drive" className='w-[7%] rounded-full'/> */}
+                RIPO CYBER
             </div>
             <div className='transform '>
                 <BasicSelect/>
