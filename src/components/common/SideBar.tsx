@@ -31,7 +31,8 @@ const SideBar = () => {
         { path: '/protected/users', label: 'users', icon: <PeopleIcon /> },
         { path: '/protected/Faq', label: 'Faq', icon: <QuizIcon /> },
         { path: '/protected/privacyPolicy', label: 'privacyPolicy', icon: <PolicyIcon /> },
-        {path:'/protected/internShipForm',label:'internShipForm',icon:<InsertDriveFileIcon />}
+        {path:'/protected/internShipForm',label:'internShipForm',icon:<InsertDriveFileIcon />},
+        {path:'/protected/contactForm',label:'contactForm',icon:<InsertDriveFileIcon />}
     ]
     return (
         <>
@@ -41,7 +42,7 @@ const SideBar = () => {
                         {
                             menu_items.map((item, index) => {
                                 return (
-                                    <Link href={item.path} key={index}>
+                                    <Link href={item.path} key={index} >
                                         <div className={`flex justify-start gap-4 items-center px-2 py-2  cursor-pointer ${pathname === item.path ? 'bg-blue-500 text-white' : 'border-l-indigo-200'}`}>
                                             <span className=''>{item.icon}</span>
                                             <span className='text-xl'>{item.label}</span>

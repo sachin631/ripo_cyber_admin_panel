@@ -318,6 +318,15 @@ export const update_privacy_details = async (data: any) => {
   return response?.data;
 }
 
+export const internship_applied_listing = async (page: any, limit: any, search_key: any) => {
+  const response = await api.get(`/admin/common/internship_applied_listing`, {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      'Content-Type': 'application/json',
+    }
+  });
+  return response?.data;
+}
 
 
 
